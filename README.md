@@ -1,4 +1,4 @@
-# 🚀 Cold Email Success Predictor v3.0
+# 🚀 Cold Email Success Predictor
 
 Professional Machine Learning-driven outreach intelligence system. Analyze your cold emails for success probability, linguistic clarity, personalization, and tone before sending.
 
