@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -7,14 +8,16 @@
     <link rel="stylesheet" href="styles.css">
     <!-- Font Awesome for SaaS Icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <meta name="description" content="Production-ready AI for cold email success prediction and linguistic optimization.">
+    <meta name="description"
+        content="Production-ready AI for cold email success prediction and linguistic optimization.">
 </head>
+
 <body>
 
     <!-- Premium Sticky Header -->
     <header>
         <div class="logo-group">
-            <h1>Email Intel v3.0</h1>
+            <h1>Email</h1>
             <p>Intelligence Platform</p>
         </div>
         <div class="status-indicator">
@@ -24,19 +27,21 @@
     </header>
 
     <main class="dashboard-grid">
-        
+
         <!-- Left Column: Input & Composer -->
         <section class="input-section">
             <div class="card">
                 <h2>Draft Outreach</h2>
                 <div class="composer-wrapper">
-                    <textarea id="email-input" placeholder="Hi [Name], I'm reaching out because I saw your recent work on..."></textarea>
+                    <textarea id="email-input"
+                        placeholder="Hi [Name], I'm reaching out because I saw your recent work on..."></textarea>
                 </div>
                 <button id="analyze-btn" class="analyze-btn">
                     <i class="fas fa-microchip"></i>
                     Analyze Success Rate
                 </button>
-                <div id="error-container" class="hidden" style="margin-top: 1rem; color: var(--danger); font-size: 0.85rem; font-weight: 600; text-align: center;">
+                <div id="error-container" class="hidden"
+                    style="margin-top: 1rem; color: var(--danger); font-size: 0.85rem; font-weight: 600; text-align: center;">
                     <i class="fas fa-exclamation-triangle"></i> <span id="error-text"></span>
                 </div>
             </div>
@@ -45,7 +50,7 @@
         <!-- Right Column: Results & Intelligence -->
         <section class="results-section">
             <h2 id="result-header">Intelligence Reports</h2>
-            
+
             <!-- Result Placeholder / Skeleton -->
             <div id="skeleton-ui" class="hidden">
                 <div class="card" style="padding: 3rem;">
@@ -62,13 +67,14 @@
                 <div class="card" style="text-align: center; padding: 5rem 2rem; color: var(--text-muted);">
                     <i class="fas fa-search-nodes" style="font-size: 3.5rem; margin-bottom: 2rem; opacity: 0.3;"></i>
                     <p style="font-weight: 500; font-size: 1.1rem;">Awaiting input...</p>
-                    <p style="font-size: 0.9rem; opacity: 0.7;">Compose an email and click analyze to generate intelligence reports.</p>
+                    <p style="font-size: 0.9rem; opacity: 0.7;">Compose an email and click analyze to generate
+                        intelligence reports.</p>
                 </div>
             </div>
 
             <!-- Analysis Results (Hidden initially) -->
             <div id="analysis-results" class="hidden">
-                
+
                 <!-- Score Card -->
                 <div class="card score-card fade-in">
                     <div class="circular-progress-container">
@@ -89,7 +95,9 @@
 
                 <!-- Breakdown Metrics -->
                 <div class="card metrics-card fade-in" style="animation-delay: 0.1s; margin-top: 2rem;">
-                    <h3 style="font-size: 0.9rem; font-weight: 800; color: var(--text-muted); text-transform: uppercase; margin-bottom: 2rem; letter-spacing: 1px;">Metrics Breakdown</h3>
+                    <h3
+                        style="font-size: 0.9rem; font-weight: 800; color: var(--text-muted); text-transform: uppercase; margin-bottom: 2rem; letter-spacing: 1px;">
+                        Metrics Breakdown</h3>
                     <div class="metrics-container" id="metrics-list">
                         <!-- Dynamic metrics injected here -->
                     </div>
@@ -97,7 +105,9 @@
 
                 <!-- Suggestions -->
                 <div class="card suggestions-card fade-in" style="animation-delay: 0.2s; margin-top: 2rem;">
-                    <h3 style="font-size: 0.9rem; font-weight: 800; color: var(--text-muted); text-transform: uppercase; margin-bottom: 2rem; letter-spacing: 1px;">Strategic Suggestions</h3>
+                    <h3
+                        style="font-size: 0.9rem; font-weight: 800; color: var(--text-muted); text-transform: uppercase; margin-bottom: 2rem; letter-spacing: 1px;">
+                        Strategic Suggestions</h3>
                     <div class="suggestion-list" id="suggestions-list">
                         <!-- Dynamic suggestions injected here -->
                     </div>
@@ -109,7 +119,7 @@
 
     <script>
         const API_URL = 'http://localhost:10000';
-        
+
         const emailInput = document.getElementById('email-input');
         const analyzeBtn = document.getElementById('analyze-btn');
         const emptyState = document.getElementById('empty-state');
@@ -176,12 +186,12 @@
             // 1. Update Score & Circle
             document.getElementById('score-val').innerText = data.score;
             document.getElementById('confidence-val').innerText = data.confidence;
-            
+
             const circle = document.getElementById('score-circle');
             const score = data.score;
             const offset = 440 - (440 * score / 100);
             circle.style.strokeDashoffset = offset;
-            
+
             // Set Color based on score
             let color = 'var(--danger)';
             let labelClass = 'label-weak';
@@ -193,7 +203,7 @@
                 labelClass = 'label-average';
             }
             circle.style.stroke = color;
-            
+
             const label = document.getElementById('score-label');
             label.innerText = data.label;
             label.className = `badge-label ${labelClass}`;
@@ -201,7 +211,7 @@
             // 2. Render Metrics
             const metricsList = document.getElementById('metrics-list');
             metricsList.innerHTML = '';
-            
+
             const icons = {
                 personalization: 'fa-user-check',
                 clarity: 'fa-wand-magic-sparkles',
@@ -228,7 +238,7 @@
             // 3. Render Suggestions
             const suggestionsList = document.getElementById('suggestions-list');
             suggestionsList.innerHTML = '';
-            
+
             data.suggestions.forEach(sug => {
                 const card = document.createElement('div');
                 card.className = 'suggestion-card';
@@ -243,7 +253,7 @@
         }
 
         analyzeBtn.addEventListener('click', analyzeEmail);
-        
+
         // Initial Health Check
         checkApiHealth();
         setInterval(checkApiHealth, 30000);
@@ -255,4 +265,5 @@
         });
     </script>
 </body>
+
 </html>
