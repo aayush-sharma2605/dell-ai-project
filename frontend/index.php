@@ -118,7 +118,7 @@
     </main>
 
     <script>
-        const API_URL = 'http://localhost:10000';
+        const API_URL = 'https://dell-ai-backend.onrender.com';
 
         const emailInput = document.getElementById('email-input');
         const analyzeBtn = document.getElementById('analyze-btn');
