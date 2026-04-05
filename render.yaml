@@ -1,0 +1,12 @@
+services:
+  - type: web
+    name: dell-ai-backend
+    env: python
+    region: singapore
+    plan: free
+    rootDir: backend
+    buildCommand: pip install -r requirements.txt
+    startCommand: gunicorn -w 4 -k uvicorn.workers.UvicornWorker app:app
+    envVars:
+      - key: PORT
+        value: 10000

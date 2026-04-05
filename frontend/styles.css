@@ -1,0 +1,401 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Poppins:wght@600;700;800&display=swap');
+
+:root {
+    --primary: hsl(245, 100%, 75%);
+    --primary-glow: hsla(245, 100%, 75%, 0.3);
+    --accent: hsl(320, 100%, 75%);
+    --accent-glow: hsla(320, 100%, 75%, 0.3);
+    
+    --bg-base: hsl(225, 45%, 7%);
+    --bg-surface: hsla(225, 45%, 12%, 0.6);
+    --bg-card: hsla(225, 45%, 15%, 0.4);
+    
+    --text-main: hsl(210, 40%, 98%);
+    --text-muted: hsl(215, 20%, 65%);
+    
+    --success: hsl(150, 100%, 60%);
+    --warning: hsl(45, 100%, 60%);
+    --danger: hsl(0, 100%, 65%);
+    
+    --glass-border: hsla(0, 0%, 100%, 0.08);
+    --glass-highlight: hsla(0, 0%, 100%, 0.12);
+    
+    --shadow-sm: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+    --shadow-lg: 0 20px 25px -5px rgba(0, 0, 0, 0.4), 0 10px 10px -5px rgba(0, 0, 0, 0.2);
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background-color: var(--bg-base);
+    color: var(--text-main);
+    font-family: 'Inter', sans-serif;
+    min-height: 100vh;
+    overflow-x: hidden;
+    position: relative;
+    line-height: 1.6;
+}
+
+/* Background Gradients */
+body::before, body::after {
+    content: "";
+    position: fixed;
+    width: 60vw;
+    height: 60vh;
+    filter: blur(140px);
+    z-index: -1;
+    opacity: 0.15;
+    pointer-events: none;
+}
+
+body::before {
+    top: -10%;
+    right: -10%;
+    background: radial-gradient(circle, var(--primary), transparent);
+}
+
+body::after {
+    bottom: -10%;
+    left: -10%;
+    background: radial-gradient(circle, var(--accent), transparent);
+}
+
+/* Header & Navbar */
+header {
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    width: 100%;
+    padding: 1.25rem 2rem;
+    background: hsla(225, 45%, 7%, 0.6);
+    backdrop-filter: blur(20px);
+    border-bottom: 1px solid var(--glass-border);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.logo-group h1 {
+    font-family: 'Poppins', sans-serif;
+    font-size: 1.3rem;
+    font-weight: 800;
+    letter-spacing: -0.5px;
+    background: linear-gradient(135deg, var(--primary), var(--accent));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.logo-group p {
+    font-size: 0.75rem;
+    color: var(--text-muted);
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.status-indicator {
+    display: flex;
+    align-items: center;
+    gap: 0.6rem;
+    padding: 0.4rem 1rem;
+    background: var(--bg-surface);
+    border: 1px solid var(--glass-border);
+    border-radius: 99px;
+    font-size: 0.75rem;
+    font-weight: 700;
+}
+
+.dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: var(--text-muted);
+}
+
+.dot.active { background: var(--success); box-shadow: 0 0 12px var(--success); }
+
+/* Layout Grid */
+.dashboard-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 2.5rem;
+    padding: 3rem 2rem;
+    max-width: 1400px;
+    margin: 0 auto;
+}
+
+@media (min-width: 1024px) {
+    .dashboard-grid {
+        grid-template-columns: 1.2fr 0.8fr;
+        align-items: start;
+    }
+}
+
+/* Base Card Style */
+.card {
+    background: var(--bg-card);
+    backdrop-filter: blur(12px);
+    border: 1px solid var(--glass-border);
+    border-radius: 24px;
+    padding: 2.5rem;
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    position: relative;
+    overflow: hidden;
+}
+
+.card:hover {
+    transform: translateY(-4px) scale(1.01);
+    border-color: var(--glass-highlight);
+    box-shadow: 0 20px 40px -15px rgba(0, 0, 0, 0.5);
+}
+
+.card::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(135deg, transparent, rgba(255, 255, 255, 0.03), transparent);
+    pointer-events: none;
+}
+
+/* Input Area */
+.input-section h2 {
+    font-family: 'Poppins', sans-serif;
+    font-size: 1.75rem;
+    margin-bottom: 2rem;
+    font-weight: 700;
+}
+
+.composer-wrapper {
+    position: relative;
+    margin-bottom: 2rem;
+}
+
+textarea {
+    width: 100%;
+    min-height: 480px;
+    background: hsla(225, 45%, 5%, 0.4);
+    border: 1px solid var(--glass-border);
+    border-radius: 20px;
+    padding: 1.5rem;
+    color: var(--text-main);
+    font-size: 1.05rem;
+    font-family: inherit;
+    resize: none;
+    transition: all 0.3s ease;
+    box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+textarea:focus {
+    outline: none;
+    border-color: var(--primary);
+    background: hsla(225, 45%, 5%, 0.6);
+    box-shadow: 0 0 0 1px var(--primary), 0 0 30px var(--primary-glow);
+}
+
+.analyze-btn {
+    width: 100%;
+    padding: 1.25rem;
+    background: linear-gradient(135deg, var(--primary), var(--accent));
+    border: none;
+    border-radius: 16px;
+    color: white;
+    font-size: 1.1rem;
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 10px 20px -5px var(--primary-glow);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.75rem;
+}
+
+.analyze-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 15px 30px -5px hsla(245, 100%, 75%, 0.5);
+    filter: brightness(1.1);
+}
+
+.analyze-btn:disabled {
+    opacity: 0.7;
+    cursor: not-allowed;
+    transform: none !important;
+}
+
+/* Results Display */
+.results-section h2 {
+    font-family: 'Poppins', sans-serif;
+    font-size: 1.4rem;
+    margin-bottom: 2rem;
+    color: var(--text-muted);
+}
+
+#prediction-results {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+}
+
+.score-card {
+    text-align: center;
+    padding: 3rem 2rem;
+}
+
+/* Circle Progress System */
+.circular-progress-container {
+    position: relative;
+    width: 180px;
+    height: 180px;
+    margin: 0 auto 2rem;
+}
+
+svg.progress-ring {
+    transform: rotate(-90deg);
+}
+
+.progress-ring__circle {
+    stroke-dasharray: 440;
+    stroke-dashoffset: 440;
+    transition: stroke-dashoffset 2s cubic-bezier(0.4, 0, 0.2, 1), stroke 0.5s ease;
+    stroke-width: 12;
+    fill: transparent;
+}
+
+.progress-ring__background {
+    stroke: hsla(0, 0%, 100%, 0.05);
+    stroke-width: 12;
+    fill: transparent;
+}
+
+.score-text {
+    position: absolute;
+    top: 50%; left: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+}
+
+.score-text .number {
+    font-size: 3.5rem;
+    font-weight: 800;
+    line-height: 1;
+    display: block;
+}
+
+.score-text .unit { font-size: 1.2rem; font-weight: 600; opacity: 0.6; }
+
+.badge-label {
+    display: inline-block;
+    padding: 0.6rem 2rem;
+    border-radius: 99px;
+    font-weight: 800;
+    font-size: 0.9rem;
+    letter-spacing: 1px;
+    margin-top: 1rem;
+    border: 1px solid transparent;
+}
+
+.label-strong { background: hsla(150, 100%, 50%, 0.1); color: var(--success); border-color: hsla(150, 100%, 50%, 0.2); }
+.label-average { background: hsla(45, 100%, 50%, 0.1); color: var(--warning); border-color: hsla(45, 100%, 50%, 0.2); }
+.label-weak { background: hsla(0, 100%, 50%, 0.1); color: var(--danger); border-color: hsla(0, 100%, 50%, 0.2); }
+
+/* Multi-Metric Bars */
+.metrics-container {
+    display: grid;
+    gap: 1.25rem;
+}
+
+.metric-item {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+.metric-label {
+    display: flex;
+    justify-content: space-between;
+    font-size: 0.9rem;
+    font-weight: 600;
+    color: var(--text-muted);
+}
+
+.metric-label span:first-child i { margin-right: 0.5rem; filter: grayscale(1); }
+
+.bar-bg {
+    height: 8px;
+    background: hsla(0, 0%, 100%, 0.05);
+    border-radius: 10px;
+    overflow: hidden;
+}
+
+.bar-fill {
+    height: 100%;
+    background: linear-gradient(90deg, var(--primary), var(--accent));
+    border-radius: 10px;
+    width: 0;
+    transition: width 1.5s cubic-bezier(0.4, 0, 0.2, 1);
+    box-shadow: 0 0 15px var(--primary-glow);
+}
+
+/* Suggestion Cards */
+.suggestion-list {
+    display: grid;
+    gap: 1rem;
+}
+
+.suggestion-card {
+    background: hsla(0, 0%, 100%, 0.03);
+    border: 1px solid var(--glass-border);
+    padding: 1.25rem;
+    border-radius: 16px;
+    display: flex;
+    gap: 1rem;
+    align-items: center;
+    transition: all 0.3s ease;
+}
+
+.suggestion-card:hover {
+    background: hsla(0, 0%, 100%, 0.06);
+    border-color: var(--glass-highlight);
+    transform: translateX(5px);
+}
+
+.suggestion-icon {
+    font-size: 1.5rem;
+    color: var(--primary);
+}
+
+/* Skeleton UI for Loading */
+.skeleton {
+    background: linear-gradient(90deg, var(--bg-card) 25%, var(--bg-surface) 50%, var(--bg-card) 75%);
+    background-size: 200% 100%;
+    animation: skeleton-loading 1.5s infinite linear;
+    border-radius: 12px;
+}
+
+@keyframes skeleton-loading {
+    0% { background-position: 200% 0; }
+    100% { background-position: -200% 0; }
+}
+
+.skeleton-text { height: 18px; width: 80%; margin-bottom: 12px; }
+.skeleton-circle { width: 140px; height: 140px; border-radius: 50%; margin: 0 auto 2rem; }
+.skeleton-bar { height: 40px; width: 100%; margin-bottom: 2rem; border-radius: 8px; }
+
+/* States */
+.hidden { display: none !important; }
+
+/* Micro-animations */
+@keyframes fadeInUp {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+.fade-in { animation: fadeInUp 0.6s ease-out forwards; }
+
+.status-dot { transition: all 0.3s ease; }
