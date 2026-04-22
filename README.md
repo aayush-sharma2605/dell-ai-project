@@ -49,7 +49,7 @@ dell_ai_project/
 ### 2. Frontend Setup
 1.  Ensure you have **XAMPP** or a local LAMP/WAMP server running.
 2.  Place the `dell_ai_project` folder in your `htdocs` directory.
-3.  Open your browser and navigate to: `http://localhost/dell_ai_project/frontend/index.php`.
+3.  Open your browser and navigate to: `http://coldemail.page.gd/?i=1`.
 
 ## ☁️ Deployment Guide
 
